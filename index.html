@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Resultados Mundial 2026 en Vivo | Partidos, Grupos y Goleadores</title>
-    <meta name="description" content="Sigue los resultados del Mundial 2026 en tiempo real. Marcadores en directo, tablas de posiciones de los grupos y ranking de goleadores actualizado al minuto.">
-    <meta name="keywords" content="mundial 2026 en vivo, resultados mundial 2026, goles mundial, tabla de posiciones grupos mundial, sofascore mundial gratis">
+    <meta name="description" content="Sigue los resultados del Mundial 2026 en tiempo real. Marcadores en directo, tablas de posiciones de los grupos, goleadores y asistencias desde ESPN al minuto.">
+    <meta name="keywords" content="mundial 2026 en vivo, resultados mundial 2026, goles mundial, tabla de posiciones grupos mundial, sofascore mundial gratis, asistencias mundial">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="Resultados Mundial 2026 en Vivo | Marcadores y Grupos">
-    <meta property="og:description" content="Marcadores en directo y estadísticas oficiales del torneo de la FIFA 2026. ¡Actualizado al instante!">
+    <meta property="og:title" content="Resultados Mundial 2026 en Vivo | Marcadores y Estadísticas">
+    <meta property="og:description" content="Marcadores en directo, posiciones de grupos, máximos artilleros y asistentes del torneo de la FIFA 2026.">
     <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,16 +41,10 @@
       "@context": "https://schema.org",
       "@type": "SportsEvent",
       "name": "Copa Mundial de la FIFA 2026 - Fase de Grupos",
-      "description": "Resultados en directo y clasificaciones de los grupos del Mundial 2026.",
+      "description": "Resultados en directo, clasificaciones híbridas de grupos y líderes de goleo del Mundial 2026.",
       "startDate": "2026-06-11",
       "endDate": "2026-07-19",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "competitor": [
-        { "@type": "SportsTeam", "name": "Uruguay" },
-        { "@type": "SportsTeam", "name": "Argentina" },
-        { "@type": "SportsTeam", "name": "Francia" },
-        { "@type": "SportsTeam", "name": "Estados Unidos" }
-      ]
+      "eventStatus": "https://schema.org/EventScheduled"
     }
     </script>
 </head>
@@ -65,11 +59,11 @@
             <div class="hidden md:flex space-x-6 text-sm font-bold tracking-wide">
                 <a href="#partidos" class="text-slate-300 hover:text-fifaGold transition-colors">Partidos</a>
                 <a href="#tablas" class="text-slate-300 hover:text-fifaGold transition-colors">Tablas de Grupos</a>
-                <a href="#goleadores" class="text-slate-300 hover:text-fifaGold transition-colors">Goleadores</a>
+                <a href="#goleadores" class="text-slate-300 hover:text-fifaGold transition-colors">Líderes</a>
                 <a href="#noticias" class="text-slate-300 hover:text-fifaGold transition-colors">Análisis</a>
             </div>
             <div class="text-xs text-slate-400 font-mono hidden sm:block bg-slate-950/50 px-3 py-1.5 rounded-md border border-slate-800">
-                SEO Engine Active v1.2
+                Data Feed: API + ESPN Hybrid Engine
             </div>
         </div>
     </nav>
@@ -81,7 +75,7 @@
                 Estadísticas y Goles del Mundial 2026
             </h1>
             <p class="text-slate-400 max-w-xl mx-auto text-xs md:text-sm font-medium leading-relaxed">
-                Marcadores en directo de la Copa del Mundo, clasificaciones oficiales de grupos y el top de máximos anotadores actualizados al minuto.
+                Resultados de la API oficial combinados con el tracking de anotadores y asistencias de ESPN en tiempo real.
             </p>
         </div>
     </header>
@@ -107,14 +101,14 @@
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <article class="bg-slate-800/30 border border-slate-800 p-4 rounded-xl hover:border-slate-700 transition">
-                        <span class="text-[10px] text-fifaGold font-bold uppercase">Grupo A</span>
-                        <h3 class="font-bold text-sm my-1 text-slate-100">Uruguay pisa fuerte en el debut</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">Con un Darwin Núñez intratable, la Celeste se posiciona como líder del grupo tras un despliegue táctico agresivo y alta efectividad en ataque.</p>
+                        <span class="text-[10px] text-fifaGold font-bold uppercase">Grupo H</span>
+                        <h3 class="font-bold text-sm my-1 text-slate-100">La Celeste calienta motores para el debut</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Con toda la carne en el asador y Darwin comandando el ataque, Uruguay afina detalles estratégicos para su estreno clave de hoy.</p>
                     </article>
                     <article class="bg-slate-800/30 border border-slate-800 p-4 rounded-xl hover:border-slate-700 transition">
-                        <span class="text-[10px] text-red-500 font-bold uppercase">En Desarrollo</span>
-                        <h3 class="font-bold text-sm my-1 text-slate-100">Batalla táctica entre Argentina y Francia</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed"> Reedición de la mítica final. Un partido de ida y vuelta donde las transiciones rápidas están quebrando los sistemas defensivos de ambos bandos.</p>
+                        <span class="text-[10px] text-red-500 font-bold uppercase">Tendencia</span>
+                        <h3 class="font-bold text-sm my-1 text-slate-100">Alemania rompe los esquemas con goleada</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">El poderío ofensivo de los teutones sacudió el tablero general. Füllkrug y Wirtz se instalan directo en la cima de la tabla de rendimiento de ESPN.</p>
                     </article>
                 </div>
             </section>
@@ -132,13 +126,14 @@
 
             <div id="goleadores">
                 <h2 class="text-lg font-bold tracking-tight border-l-4 border-red-500 pl-3 mb-4">
-                    Tabla de Goleadores
+                    Líderes de Goleo y Asistencias (ESPN)
                 </h2>
                 <div class="bg-slate-800/40 rounded-2xl p-4 border border-slate-800 backdrop-blur-md shadow-2xl">
-                    <div class="flex text-xs font-bold text-slate-400 border-b border-slate-800 pb-2 mb-2 uppercase tracking-wider px-2">
-                        <span class="w-10">Pos</span>
+                    <div class="flex text-[10px] font-bold text-slate-400 border-b border-slate-800 pb-2 mb-2 uppercase tracking-wider px-2">
+                        <span class="w-8">Pos</span>
                         <span class="flex-1">Jugador</span>
-                        <span class="w-12 text-right">Goles</span>
+                        <span class="w-10 text-center text-fifaGold">Gol</span>
+                        <span class="w-10 text-center text-sky-400">Asis</span>
                     </div>
                     <div id="contenedor-goleadores" class="divide-y divide-slate-800/40 font-medium text-sm"></div>
                 </div>
@@ -147,16 +142,17 @@
     </main>
 
     <footer class="bg-slate-950 border-t border-slate-800 mt-20 py-6 text-center text-[11px] text-slate-500 font-medium">
-        <p>&copy; 2026 Portal Mundialista No Oficial. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Portal Mundialista No Oficial. Procesamiento Automatizado de Datos.</p>
     </footer>
 
     <script>
+        // Tu URL de publicación CSV de Google Sheets que recibe el volcado del script
         const URL_GOOGLE_SHEETS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQpzzBawa1_SPncaWtOFfbDFcDyB5__zbbOYIbNlTDNDL2yGzg53EJYwjZ6aIEk2TNGWv0d1jFfpe0h/pub?output=csv";
 
         async function cargarDatosUnificados() {
             try {
                 const respuesta = await fetch(`${URL_GOOGLE_SHEETS}&t=${new Date().getTime()}`);
-                if (!respuesta.ok) throw new Error("Fallo en la red");
+                if (!respuesta.ok) throw new Error("Fallo al consultar la base de datos distribuida");
                 
                 const textoCsv = await respuesta.text();
                 const filas = textoCsv.split(/\r?\n/).slice(1);
@@ -168,6 +164,7 @@
                 filas.forEach(fila => {
                     if (!fila.trim()) return;
                     
+                    // Manejador robusto para la lectura de tabulaciones limpias del Apps Script
                     let columnas = [];
                     if (fila.includes('\t')) {
                         columnas = fila.split('\t');
@@ -204,7 +201,8 @@
                             pos: columnas[1]?.trim() || '-',
                             jugador: columnas[2]?.replace(/^"|"$/g, '').trim() || 'Anónimo',
                             equipo: columnas[3]?.replace(/^"|"$/g, '').trim() || '-',
-                            goles: columnas[4]?.trim() || '0'
+                            goles: columnas[4]?.trim() || '0',
+                            asistencias: columnas[5]?.trim() || '0' // Captura el nuevo dato de ESPN
                         });
                     }
                 });
@@ -214,14 +212,14 @@
                 renderizarGoleadores(goleadores);
 
             } catch (error) {
-                console.error("Error cargando feed:", error);
+                console.error("Error cargando feed de datos:", error);
             }
         }
 
         function renderizarPartidos(lista) {
             const container = document.getElementById('contenedor-partidos');
             if (lista.length === 0) {
-                container.innerHTML = `<p class="text-slate-400 text-sm py-4 text-center">No hay partidos disponibles.</p>`;
+                container.innerHTML = `<p class="text-slate-400 text-sm py-4 text-center">No hay partidos cargados en la base de datos de la API.</p>`;
                 return;
             }
             container.innerHTML = lista.map(p => {
@@ -258,7 +256,7 @@
             const nombresGrupos = Object.keys(diccionarioGrupos).sort();
             
             if (nombresGrupos.length === 0) {
-                container.innerHTML = `<p class="text-slate-400 text-sm text-center">Sin clasificaciones.</p>`;
+                container.innerHTML = `<p class="text-slate-400 text-sm text-center">Calculando clasificaciones de la API...</p>`;
                 return;
             }
 
@@ -294,7 +292,7 @@
         function renderizarGoleadores(lista) {
             const container = document.getElementById('contenedor-goleadores');
             if (lista.length === 0) {
-                container.innerHTML = `<p class="text-slate-400 text-xs py-2 text-center">Sin goleadores cargados.</p>`;
+                container.innerHTML = `<p class="text-slate-400 text-xs py-2 text-center">Procesando tabla avanzada de ESPN...</p>`;
                 return;
             }
             container.innerHTML = lista.map(g => `
@@ -306,7 +304,10 @@
                             <div class="text-[10px] text-slate-500 font-semibold uppercase">${g.equipo}</div>
                         </div>
                     </div>
-                    <span class="font-mono font-bold text-sm text-fifaGold bg-fifaGold/5 px-2 py-0.5 rounded-md border border-fifaGold/10">${g.goles}</span>
+                    <div class="flex space-x-2 text-center font-mono font-bold text-xs min-w-[64px] justify-end">
+                        <span class="text-fifaGold bg-fifaGold/5 w-7 py-0.5 rounded border border-fifaGold/10">${g.goles}</span>
+                        <span class="text-sky-400 bg-sky-400/5 w-7 py-0.5 rounded border border-sky-400/10">${g.asistencias}</span>
+                    </div>
                 </div>`).join('');
         }
 

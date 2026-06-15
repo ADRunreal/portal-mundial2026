@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Mundial 2026 | Resultados en Vivo y Estadísticas</title>
-    <!-- Tailwind CSS para diseño espectacular estilo Sofascore -->
+    <!-- Tailwind CSS para renderizado visual de alto impacto -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,64 +13,123 @@
                     colors: {
                         fifaNavy: '#0b132b',
                         fifaGold: '#d4af37',
-                        fifaGreen: '#10b981'
+                        fifaGreen: '#10b981',
+                        fifaDark: '#1c2541'
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Optimización de scrollbars y transiciones suaves */
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b132b; }
+        ::-webkit-scrollbar-thumb { background: #1c2541; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+    </style>
 </head>
-<body class="bg-slate-900 text-white font-sans">
+<body class="bg-slate-900 text-white font-sans antialiased selection:bg-fifaGold selection:text-fifaNavy">
 
-    <!-- Navbar -->
-    <nav class="bg-fifaNavy border-b border-slate-800 p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-between items-center">
-            <h1 class="text-xl font-black tracking-wider text-fifaGold">COPA 2026 <span class="text-xs text-white bg-red-600 px-1.5 py-0.5 rounded ml-1 animate-pulse">EN VIVO</span></h1>
-            <div class="space-x-4 text-sm font-semibold">
-                <a href="#partidos" class="hover:text-fifaGold transition">Partidos</a>
-                <a href="#grupos" class="hover:text-fifaGold transition">Grupos</a>
-                <a href="#goleadores" class="hover:text-fifaGold transition">Goleadores</a>
+    <!-- Navbar Corporativo -->
+    <nav class="bg-fifaNavy border-b border-slate-800 p-4 sticky top-0 z-50 shadow-xl">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-tighter text-fifaGold">MUNDIAL 2026</span>
+                <span class="text-[10px] uppercase bg-red-600 text-white font-extrabold px-2 py-0.5 rounded-full tracking-widest animate-pulse shadow-lg shadow-red-600/30">EN VIVO</span>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-bold tracking-wide">
+                <a href="#partidos" class="text-slate-300 hover:text-fifaGold transition-colors duration-200">Centro de Partidos</a>
+                <a href="#grupos" class="text-slate-300 hover:text-fifaGold transition-colors duration-200">Tablas de Grupos</a>
+                <a href="#goleadores" class="text-slate-300 hover:text-fifaGold transition-colors duration-200">Goleadores</a>
+            </div>
+            <div class="text-xs text-slate-400 font-mono hidden sm:block bg-slate-950/50 px-3 py-1.5 rounded-md border border-slate-800">
+                Data Feed: Google Sheets API v4
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="bg-gradient-to-r from-purple-900 to-fifaNavy py-12 px-4 text-center border-b border-slate-800">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-4">El Portal Mundialista Definitivo</h2>
-        <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base">Sigue todos los partidos, estadísticas y resultados del torneo más grande de la historia en tiempo real.</p>
+    <!-- Hero de Captación de Tráfico (SEO Optimizado) -->
+    <header class="relative bg-gradient-to-br from-slate-950 via-fifaNavy to-fifaDark py-16 px-4 text-center border-b border-slate-800 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05)_0,transparent_70%)]"></div>
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-400">
+                Resultados del Mundial 2026 en Tiempo Real
+            </h2>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base font-medium leading-relaxed">
+                Estadísticas de alto rendimiento, marcadores en directo y posiciones del torneo más grande de la historia de la FIFA.
+            </p>
+        </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
+    <!-- Contenedor Principal (Layout de Rejilla Asimétrica) -->
+    <main class="container mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-8 my-8">
         
-        <!-- Centro de Partidos (Sofascore Style) -->
-        <section class="lg:col-span-2 space-y-4">
-            <h3 class="text-lg font-bold border-l-4 border-fifaGold pl-2">Partidos Destacados</h3>
-            <div id="contenedor-partidos" class="space-y-3">
-                <!-- Los partidos se cargarán automáticamente aquí con JavaScript -->
-                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex justify-between items-center animate-pulse">
-                    <div class="h-4 bg-slate-700 w-1/3 rounded"></div>
-                    <div class="h-4 bg-slate-700 w-14 rounded"></div>
-                    <div class="h-4 bg-slate-700 w-1/3 rounded"></div>
+        <!-- Centro de Partidos Dinámico (Columna de Mayor Peso) -->
+        <section id="partidos" class="lg:col-span-2 space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <h3 class="text-xl font-bold tracking-tight border-l-4 border-fifaGold pl-3">
+                    Partidos del Torneo
+                </h3>
+                <button onclick="cargarPartidosDesdeSheets()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition flex items-center space-x-1 font-semibold active:scale-95">
+                    <svg class="w-3 h-3 text-fifaGold animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.253 8H18"></path></svg>
+                    <span>Actualizar marcador</span>
+                </button>
+            </div>
+
+            <!-- Contenedor Inyector de Datos -->
+            <div id="contenedor-partidos" class="space-y-4">
+                <!-- Esqueleto de Carga (Skeleton Loader) para mejorar CLS -->
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-800/80 flex justify-between items-center animate-pulse">
+                    <div class="h-5 bg-slate-700/60 w-1/3 rounded-md"></div>
+                    <div class="h-10 bg-slate-700/80 w-20 rounded-xl"></div>
+                    <div class="h-5 bg-slate-700/60 w-1/3 rounded-md"></div>
+                </div>
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-800/80 flex justify-between items-center animate-pulse">
+                    <div class="h-5 bg-slate-700/60 w-1/3 rounded-md"></div>
+                    <div class="h-10 bg-slate-700/80 w-20 rounded-xl"></div>
+                    <div class="h-5 bg-slate-700/60 w-1/3 rounded-md"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Sidebar: Tablas y Goleadores -->
-        <aside class="space-y-6">
-            <div>
-                <h3 class="text-lg font-bold border-l-4 border-fifaGreen pl-2 mb-3">Grupo A</h3>
-                <div class="bg-slate-800 rounded-xl p-4 border border-slate-700 overflow-hidden">
+        <!-- Barra Lateral: Tablas de Posiciones Fijas Automáticas -->
+        <aside class="space-y-8">
+            <div id="grupos">
+                <h3 class="text-xl font-bold tracking-tight border-l-4 border-fifaGreen pl-3 mb-4">
+                    Grupo Clasificatorio A
+                </h3>
+                <div class="bg-slate-800/40 rounded-2xl p-5 border border-slate-800 backdrop-blur-md shadow-2xl">
                     <table class="w-full text-sm text-left">
                         <thead>
-                            <tr class="text-slate-400 border-b border-slate-700">
-                                <th class="pb-2">Pos</th>
-                                <th class="pb-2">Equipo</th>
-                                <th class="pb-2 text-center">PTS</th>
+                            <tr class="text-slate-400 border-b border-slate-800 text-xs font-bold uppercase tracking-wider">
+                                <th class="pb-3 w-12 text-center">Pos</th>
+                                <th class="pb-3">Selección</th>
+                                <th class="pb-3 text-center w-16">PTS</th>
                             </tr>
                         </thead>
-                        <tbody id="tabla-grupo">
-                            <!-- Datos dinámicos -->
+                        <tbody id="tabla-grupo" class="divide-y divide-slate-800/50 font-medium">
+                            <!-- Datos calculados o estáticos del Grupo A -->
+                            <tr class="hover:bg-slate-800/20 transition-colors">
+                                <td class="py-3.5 text-center font-bold text-fifaGold">1</td>
+                                <td class="py-3.5 font-semibold text-slate-100">Uruguay</td>
+                                <td class="py-3.5 text-center font-bold text-fifaGreen bg-fifaGreen/5 rounded-md">3</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/20 transition-colors">
+                                <td class="py-3.5 text-center font-bold text-slate-400">2</td>
+                                <td class="py-3.5 font-semibold text-slate-200">Estados Unidos</td>
+                                <td class="py-3.5 text-center font-bold text-slate-300">1</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/20 transition-colors">
+                                <td class="py-3.5 text-center font-bold text-slate-400">3</td>
+                                <td class="py-3.5 font-semibold text-slate-200">México</td>
+                                <td class="py-3.5 text-center font-bold text-slate-300">1</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/20 transition-colors">
+                                <td class="py-3.5 text-center font-bold text-slate-500">4</td>
+                                <td class="py-3.5 font-semibold text-slate-400">Corea del Sur</td>
+                                <td class="py-3.5 text-center font-bold text-slate-500">0</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -78,44 +137,115 @@
         </aside>
     </main>
 
-    <!-- Script para conectar con tus datos gratuitos -->
+    <!-- Footer Institucional -->
+    <footer class="bg-slate-950 border-t border-slate-800 mt-20 py-8 text-center text-xs text-slate-500 font-medium tracking-wide">
+        <p>&copy; 2026 Portal Mundialista No Oficial. Desarrollado con Infraestructura Remota a Costo Cero.</p>
+    </footer>
+
+    <!-- Lógica de Negocio y Consumo de Datos en el Cliente -->
     <script>
-        // Simularemos los datos que se actualizarán solos en tu GitHub
-        const datosMundial = {
-            partidos: [
-                { local: "Uruguay", visitante: "Corea del Sur", golesL: 2, golesV: 1, estado: "Finalizado", minuto: "" },
-                { local: "Estados Unidos", visitante: "México", golesL: 0, golesV: 0, estado: "En Vivo", minuto: "42'" }
-            ],
-            grupoA: [
-                { pos: 1, equipo: "Uruguay", pts: 3 },
-                { pos: 2, equipo: "Estados Unidos", pts: 1 },
-                { pos: 3, equipo: "México", pts: 1 },
-                { pos: 4, equipo: "Corea del Sur", pts: 0 }
-            ]
-        };
+        // Endpoint inyectado de tu Google Sheets (Formato CSV Público)
+        const URL_GOOGLE_SHEETS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQpzzBawa1_SPncaWtOFfbDFcDyB5__zbbOYIbNlTDNDL2yGzg53EJYwjZ6aIEk2TNGWv0d1jFfpe0h/pub?output=csv";
 
-        // Renderizar partidos
-        const container = document.getElementById('contenedor-partidos');
-        container.innerHTML = datosMundial.partidos.map(p => `
-            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex justify-between items-center hover:border-slate-600 transition">
-                <div class="w-2/5 font-semibold text-right">${p.local}</div>
-                <div class="w-1/5 text-center bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
-                    <span class="text-fifaGold font-mono font-bold">${p.golesL} - ${p.golesV}</span>
-                    <div class="text-[10px] text-slate-400 uppercase mt-0.5">${p.estado} ${p.minuto}</div>
-                </div>
-                <div class="w-2/5 font-semibold text-left">${p.visitante}</div>
-            </div>
-        `).join('');
+        async function cargarPartidosDesdeSheets() {
+            try {
+                // Forzar limpieza de caché del navegador agregando un timestamp al fetch
+                const respuesta = await fetch(`${URL_GOOGLE_SHEETS}&t=${new Date().getTime()}`);
+                if (!respuesta.ok) throw new Error("Error de comunicación de red con el origen");
+                
+                const textoCsv = await respuesta.text();
+                
+                // Procesar saltos de línea universales (\n o \r\n)
+                const filas = textoCsv.split(/\r?\n/).slice(1); 
+                
+                const partidos = filas.map((fila, index) => {
+                    // Expresión regular robusta para separar por comas ignorando comas internas si existieran
+                    const columnas = fila.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    if (columnas.length < 5) return null;
+                    
+                    return {
+                        local: columnas[0]?.replace(/^"|"$/g, '').trim(),
+                        visitante: columnas[1]?.replace(/^"|"$/g, '').trim(),
+                        golesL: columnas[2]?.trim() || '0',
+                        golesV: columnas[3]?.trim() || '0',
+                        estado: columnas[4]?.replace(/^"|"$/g, '').trim() || 'Programado',
+                        minuto: columnas[5]?.replace(/^"|"$/g, '').trim() || ''
+                    };
+                }).filter(p => p && p.local);
 
-        // Renderizar tabla
-        const tabla = document.getElementById('tabla-grupo');
-        tabla.innerHTML = datosMundial.grupoA.map(e => `
-            <tr class="border-b border-slate-700/50 last:border-0">
-                <td class="py-2.5 font-bold text-slate-400">${e.pos}</td>
-                <td class="py-2.5 font-semibold">${e.equipo}</td>
-                <td class="py-2.5 text-center font-bold text-fifaGreen">${e.pts}</td>
-            </tr>
-        `).join('');
+                renderizarPartidos(partidos);
+            } catch (error) {
+                console.error("Error crítico en la capa de abstracción de datos:", error);
+                document.getElementById('contenedor-partidos').innerHTML = `
+                    <div class="bg-red-950/20 text-red-400 p-4 rounded-xl border border-red-900/50 text-sm text-center">
+                        ⚠️ Error temporal de conexión. Los datos se actualizarán de forma automática en breve.
+                    </div>`;
+            }
+        }
+
+        function renderizarPartidos(listaPartidos) {
+            const container = document.getElementById('contenedor-partidos');
+            
+            if (!listaPartidos || listaPartidos.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-slate-800/50 text-slate-400 p-8 rounded-2xl border border-slate-800 text-sm text-center font-medium">
+                        No se registran partidos programados en la base de datos para el día de hoy.
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = listaPartidos.map(p => {
+                const esEnVivo = p.estado.toLowerCase().includes('vivo') || p.estado.toLowerCase().includes('live');
+                const esFinalizado = p.estado.toLowerCase().includes('final') || p.estado.toLowerCase().includes('terminado');
+                
+                // Lógica de diseño dinámico según el estado del partido (Match Center Engine)
+                let estadoBadge = '';
+                let containerBorder = 'border-slate-800/60 bg-slate-800/40';
+                let marcadorColor = 'text-fifaGold';
+
+                if (esEnVivo) {
+                    containerBorder = 'border-red-500/30 bg-gradient-to-r from-slate-800 to-red-950/10 shadow-lg shadow-red-950/5';
+                    marcadorColor = 'text-red-500 font-extrabold';
+                    estadoBadge = `
+                        <div class="flex flex-col items-center">
+                            <span class="text-[10px] text-red-500 font-black uppercase tracking-wider bg-red-500/10 px-1.5 py-0.5 rounded animate-pulse">${p.estado}</span>
+                            <span class="text-[11px] text-slate-400 font-mono font-bold mt-0.5">${p.minuto}</span>
+                        </div>`;
+                } else if (esFinalizado) {
+                    containerBorder = 'border-slate-800 bg-slate-800/20 opacity-85';
+                    marcadorColor = 'text-slate-400';
+                    estadoBadge = `<span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider bg-slate-900/50 px-1.5 py-0.5 rounded">${p.estado}</span>`;
+                } else {
+                    // Estado programado o por jugar
+                    estadoBadge = `<span class="text-[10px] text-slate-400 font-bold uppercase tracking-wide bg-slate-900/40 px-1.5 py-0.5 rounded">${p.estado}</span>`;
+                }
+
+                return `
+                    <div class="p-5 rounded-2xl border ${containerBorder} flex justify-between items-center hover:border-slate-700/60 transition-all duration-200">
+                        <!-- Equipo Local -->
+                        <div class="w-2/5 font-bold text-right text-sm md:text-base tracking-tight text-slate-100 pr-2 truncate">
+                            ${p.local}
+                        </div>
+                        
+                        <!-- Marcador Central Estilo Sofascore -->
+                        <div class="w-1/5 flex flex-col items-center justify-center bg-slate-950/80 px-4 py-2 rounded-xl border border-slate-800 min-w-[85px] shadow-inner">
+                            <span class="${marcadorColor} font-mono font-bold text-xl tracking-tighter">
+                                ${p.golesL}<span class="text-slate-600 font-sans mx-0.5">:</span>${p.golesV}
+                            </span>
+                            <div class="mt-1 w-full flex justify-center">${estadoBadge}</div>
+                        </div>
+                        
+                        <!-- Equipo Visitante -->
+                        <div class="w-2/5 font-bold text-left text-sm md:text-base tracking-tight text-slate-100 pl-2 truncate">
+                            ${p.visitante}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Iniciar ejecución de carga asíncrona de forma inmediata al instanciar el DOM
+        document.addEventListener("DOMContentLoaded", cargarPartidosDesdeSheets);
     </script>
 </body>
 </html>

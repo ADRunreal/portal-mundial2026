@@ -145,17 +145,18 @@
         <p>&copy; 2026 Portal Mundialista No Oficial. Procesamiento Automatizado de Datos.</p>
     </footer>
 
-    <script>
-        // COLOCA AQUÍ LA URL COMPLETA DE TU NUEVA VERSIÓN DE WEB APP DE GOOGLE APPS SCRIPT
+<script>
+        // URL de tu Web App de Google Apps Script ya actualizada
         const URL_GOOGLE_SHEETS = "https://script.google.com/macros/s/AKfycbyVCfCcDAu24S3jBRKGRCTNAdAwJtQWg4Agsg-tcv9iEs6fh85KrREGFHI2cA8Tr3pJPA/exec";
 
         async function cargarDatosUnificados() {
             try {
+                // Consultamos al proxy de Google para evitar el bloqueo de CORS y Sandbox
                 const respuesta = await fetch(`${URL_GOOGLE_SHEETS}?t=${new Date().getTime()}`);
-                if (!respuesta.ok) throw new Error("Fallo al consultar la base de datos distribuida");
+                if (!respuesta.ok) throw new Error("La Web App de Google rechazó la petición.");
                 
                 const textoTsv = await respuesta.text();
-                const filas = textoTsv.split(/\r?\n/).slice(1);
+                const filas = textoTsv.split(/\r?\n/).slice(1); // Ignoramos la cabecera
                 
                 const partidos = [];
                 const grupos = {}; 
@@ -164,7 +165,6 @@
                 filas.forEach(fila => {
                     if (!fila.trim()) return;
                     
-                    // Separador por tabulaciones robusto nativo del motor Web App
                     const columnas = fila.split('\t');
                     if (columnas.length < 5) return;
 
@@ -206,15 +206,18 @@
                 renderizarGoleadores(goleadores);
 
             } catch (error) {
-                console.error("Error cargando feed de datos:", error);
-                document.getElementById('contenedor-partidos').innerHTML = `<p class="text-red-500 text-xs text-center py-4">Error de enlace de datos. Verifica la versión de la implementación.</p>`;
+                console.error("Error en el flujo de datos:", error);
+                document.getElementById('contenedor-partidos').innerHTML = `
+                    <p class="text-red-500 text-xs text-center py-4">
+                        Error de comunicación con la Web App. Asegúrate de haber publicado una "Nueva Versión".
+                    </p>`;
             }
         }
 
         function renderizarPartidos(lista) {
             const container = document.getElementById('contenedor-partidos');
             if (lista.length === 0) {
-                container.innerHTML = `<p class="text-slate-400 text-sm py-4 text-center">No hay partidos cargados en la base de datos de la API.</p>`;
+                container.innerHTML = `<p class="text-slate-400 text-sm py-4 text-center">No hay partidos cargados en la API.</p>`;
                 return;
             }
             container.innerHTML = lista.map(p => {
@@ -286,10 +289,6 @@
 
         function renderizarGoleadores(lista) {
             const container = document.getElementById('contenedor-goleadores');
-            if (lista.length === 0) {
-                container.innerHTML = `<p class="text-slate-400 text-xs py-2 text-center">Procesando tabla avanzada de ESPN...</p>`;
-                return;
-            }
             container.innerHTML = lista.map(g => `
                 <div class="flex items-center justify-between py-2.5 px-2 hover:bg-slate-800/20 transition-colors">
                     <div class="flex items-center space-x-3 truncate">

@@ -146,16 +146,16 @@
     </footer>
 
     <script>
-        // Tu URL de publicación CSV de Google Sheets que recibe el volcado del script
-        const URL_GOOGLE_SHEETS = "https://script.google.com/macros/s/AKfycbxW76kjYFShWbrSFoannIbgBWRzO7Tnkjb0_zaVLl7UBpDnF3L2tjI28pQVh49RiNnVrg/exec";
+        // COLOCA AQUÍ LA URL COMPLETA DE TU NUEVA VERSIÓN DE WEB APP DE GOOGLE APPS SCRIPT
+        const URL_GOOGLE_SHEETS = "https://script.google.com/macros/s/AKfycbyVCfCcDAu24S3jBRKGRCTNAdAwJtQWg4Agsg-tcv9iEs6fh85KrREGFHI2cA8Tr3pJPA/exec";
 
         async function cargarDatosUnificados() {
             try {
-                const respuesta = await fetch(`${URL_GOOGLE_SHEETS}&t=${new Date().getTime()}`);
+                const respuesta = await fetch(`${URL_GOOGLE_SHEETS}?t=${new Date().getTime()}`);
                 if (!respuesta.ok) throw new Error("Fallo al consultar la base de datos distribuida");
                 
-                const textoCsv = await respuesta.text();
-                const filas = textoCsv.split(/\r?\n/).slice(1);
+                const textoTsv = await respuesta.text();
+                const filas = textoTsv.split(/\r?\n/).slice(1);
                 
                 const partidos = [];
                 const grupos = {}; 
@@ -164,34 +164,28 @@
                 filas.forEach(fila => {
                     if (!fila.trim()) return;
                     
-                    // Manejador robusto para la lectura de tabulaciones limpias del Apps Script
-                    let columnas = [];
-                    if (fila.includes('\t')) {
-                        columnas = fila.split('\t');
-                    } else {
-                        columnas = fila.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    }
-
+                    // Separador por tabulaciones robusto nativo del motor Web App
+                    const columnas = fila.split('\t');
                     if (columnas.length < 5) return;
 
                     const seccion = columnas[0]?.trim().toUpperCase();
 
                     if (seccion === 'PARTIDO') {
                         partidos.push({
-                            local: columnas[1]?.replace(/^"|"$/g, '').trim(),
-                            visitante: columnas[2]?.replace(/^"|"$/g, '').trim(),
+                            local: columnas[1]?.trim() || 'TBD',
+                            visitante: columnas[2]?.trim() || 'TBD',
                             golesL: columnas[3]?.trim() || '0',
                             golesV: columnas[4]?.trim() || '0',
-                            estado: columnas[5]?.replace(/^"|"$/g, '').trim() || 'Programado',
-                            minuto: columnas[6]?.replace(/^"|"$/g, '').trim() || ''
+                            estado: columnas[5]?.trim() || 'Programado',
+                            minuto: columnas[6]?.trim() || ''
                         });
                     } else if (seccion === 'GRUPO') {
-                        const nombreGrupo = columnas[1]?.replace(/^"|"$/g, '').trim() || 'Otros';
+                        const nombreGrupo = columnas[1]?.trim() || 'Otros';
                         if (!grupos[nombreGrupo]) grupos[nombreGrupo] = [];
                         
                         grupos[nombreGrupo].push({
                             pos: columnas[2]?.trim() || '-',
-                            equipo: columnas[3]?.replace(/^"|"$/g, '').trim() || 'Desconocido',
+                            equipo: columnas[3]?.trim() || 'Desconocido',
                             pj: columnas[4]?.trim() || '0',
                             goles: columnas[5]?.trim() || '0',
                             pts: columnas[6]?.trim() || '0'
@@ -199,10 +193,10 @@
                     } else if (seccion === 'GOLEADOR') {
                         goleadores.push({
                             pos: columnas[1]?.trim() || '-',
-                            jugador: columnas[2]?.replace(/^"|"$/g, '').trim() || 'Anónimo',
-                            equipo: columnas[3]?.replace(/^"|"$/g, '').trim() || '-',
+                            jugador: columnas[2]?.trim() || 'Anónimo',
+                            equipo: columnas[3]?.trim() || '-',
                             goles: columnas[4]?.trim() || '0',
-                            asistencias: columnas[5]?.trim() || '0' // Captura el nuevo dato de ESPN
+                            asistencias: columnas[5]?.trim() || '0'
                         });
                     }
                 });
@@ -213,6 +207,7 @@
 
             } catch (error) {
                 console.error("Error cargando feed de datos:", error);
+                document.getElementById('contenedor-partidos').innerHTML = `<p class="text-red-500 text-xs text-center py-4">Error de enlace de datos. Verifica la versión de la implementación.</p>`;
             }
         }
 
@@ -225,6 +220,7 @@
             container.innerHTML = lista.map(p => {
                 const esEnVivo = p.estado.toLowerCase().includes('vivo') || p.estado.toLowerCase().includes('live');
                 const esFinalizado = p.estado.toLowerCase().includes('final') || p.estado.toLowerCase().includes('terminado');
+                
                 let border = 'border-slate-800/60 bg-slate-800/40';
                 let txtScore = 'text-fifaGold';
                 let statusBadge = `<span class="text-[10px] text-slate-400 font-bold bg-slate-900/40 px-1.5 py-0.5 rounded">${p.estado}</span>`;
@@ -232,11 +228,10 @@
                 if (esEnVivo) {
                     border = 'border-red-500/30 bg-gradient-to-r from-slate-800 to-red-950/10 shadow-md';
                     txtScore = 'text-red-500 font-black';
-                    statusBadge = `<div class="flex flex-col items-center"><span class="text-[9px] text-white font-black uppercase tracking-wider bg-red-600 px-1 rounded animate-pulse">${p.estado}</span><span class="text-[11px] text-slate-400 font-mono font-bold mt-0.5">${p.minuto}</span></div>`;
+                    statusBadge = `<div class="flex flex-col items-center"><span class="text-[9px] text-white font-black uppercase tracking-wider bg-red-600 px-1 rounded animate-pulse">EN VIVO</span><span class="text-[11px] text-slate-400 font-mono font-bold mt-0.5">${p.minuto}</span></div>`;
                 } else if (esFinalizado) {
                     border = 'border-slate-800 bg-slate-800/20 opacity-75';
                     txtScore = 'text-slate-400';
-                    statusBadge = `<span class="text-[10px] text-slate-400 font-bold bg-slate-900/60 px-1.5 py-0.5 rounded">${p.estado}</span>`;
                 }
 
                 return `
